@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   skip_before_action :only_signed_in, only: [:new, :create]
-  skip_before_action :only_signed_out, only: [:new, :create]
+  before_action :only_signed_out, only: [:new, :create]
 
   def new
   end
@@ -15,8 +15,6 @@ class SessionsController < ApplicationController
     else
       redirect_to new_session_path, danger: 'Identifiants incorrects'
     end
-
-
   end
 
   def destroy

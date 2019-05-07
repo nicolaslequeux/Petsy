@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   private
 
   def only_signed_in
-    # if !session[:auth] || !session[:auth]['id']
     if !user_signed_in?
       redirect_to new_user_path, danger: "Vous n'êtes pas autorisé à vous connecter."
     end
